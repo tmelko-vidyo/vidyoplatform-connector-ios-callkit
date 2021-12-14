@@ -97,7 +97,7 @@ extension ProviderDelegate: CXProviderDelegate {
     func provider(_ provider: CXProvider, perform action: CXAnswerCallAction) {
         guard let call = callManager.callWithUUID(uuid: action.callUUID) else {
             action.fail()
-            fatalError("Error gathering call item.")
+            return
         }
         
         print("VidyoCall: CXAnswerCallAction. UUID: \(call.uuid.uuidString)")
@@ -112,7 +112,7 @@ extension ProviderDelegate: CXProviderDelegate {
     func provider(_ provider: CXProvider, perform action: CXEndCallAction) {
         guard let call = callManager.callWithUUID(uuid: action.callUUID) else {
             action.fail()
-            fatalError("Error gathering call item.")
+            return
         }
         
         print("VidyoCall: CXEndCallAction UUID: \(call.uuid.uuidString)")
